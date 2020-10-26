@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
+import 'package:zerosix/arguments/product_args.dart';
+import 'package:zerosix/models/product.dart';
 import 'package:zerosix/models/store.dart';
 import 'package:zerosix/pages/customer/home_customer.dart';
 import 'package:zerosix/ui/product_layout.dart';
 import 'package:zerosix/ui/store_category_layout.dart';
 import 'package:zerosix/utils/factory.dart';
+import 'package:zerosix/utils/global.dart';
 
 void main() => runApp(HomePage());
 
@@ -34,7 +37,7 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
-    List<Store> stores = Factory.getStores();
+    List<Store> stores = Global.stores;
 
     return Scaffold(
       appBar: AppBar(
@@ -64,7 +67,13 @@ class _HomePageState extends State<HomePage> {
             child: ListView.builder(
               shrinkWrap: true,
               physics: const ClampingScrollPhysics(),
-              itemBuilder: (context, position) => ProductLayout(productPage: widget, product: stores.elementAt(_selectedIndex).products.elementAt(position)),
+              itemBuilder: (context, position) => ProductLayout(
+                productPage: widget,
+                productArgs: ProductArgs(
+                  store: stores.elementAt(_selectedIndex),
+                  selectedProduct: stores.elementAt(_selectedIndex).products.elementAt(position),
+                )
+              ),
               itemCount: stores.elementAt(_selectedIndex).products.length,
             ),
           ) : Text('There is no available product')

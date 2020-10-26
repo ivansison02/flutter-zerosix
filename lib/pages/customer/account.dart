@@ -32,20 +32,20 @@ class _AccountPageState extends State<AccountPage> {
               FlatButton(
                   onPressed: () {
                     Navigator.of(context).pop();
+                  },
+                  child: Text(
+                      'No'
+                  )
+              ),
+              FlatButton(
+                  onPressed: () {
+                    Navigator.of(context).pop();
                     Navigator.pushNamedAndRemoveUntil(context, LoginPage.routeName, (route) => false);
                   },
                   child: Text(
                       'Yes'
                   )
               ),
-              FlatButton(
-                  onPressed: () {
-                    Navigator.of(context).pop();
-                  },
-                  child: Text(
-                      'No'
-                  )
-              )
             ],
           );
         });

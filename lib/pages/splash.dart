@@ -1,6 +1,8 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
+import 'package:zerosix/utils/factory.dart';
+import 'package:zerosix/utils/global.dart';
 
 import 'login.dart';
 
@@ -12,6 +14,7 @@ class SplashPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    Global.stores = Factory.getStores();
     Timer(Duration(seconds: 3),
             ()=> Navigator.pushReplacementNamed(context, LoginPage.routeName)
           );

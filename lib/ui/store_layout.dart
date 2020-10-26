@@ -1,12 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:zerosix/controller/store_controller.dart';
 import 'package:zerosix/models/store.dart';
+import 'package:zerosix/pages/admin/add_store.dart';
+import 'package:zerosix/pages/admin/home_admin.dart';
 import 'package:zerosix/pages/admin/view_store.dart';
 
 class StoreLayout extends StatelessWidget {
 
+  final HomeAdminPage storePage;
   final Store store;
 
-  StoreLayout({this.store});
+  StoreLayout({this.storePage, this.store});
 
   @override
   Widget build(BuildContext context) {
@@ -26,7 +30,7 @@ class StoreLayout extends StatelessWidget {
                 ),
               ),
               Expanded(
-                flex: 4,
+                flex: 3,
                 child: Padding(
                   padding: EdgeInsets.fromLTRB(16.0, 16.0, 0.0, 16.0),
                   child: Column(
@@ -51,6 +55,14 @@ class StoreLayout extends StatelessWidget {
                   ),
                 ),
               ),
+              Expanded(
+                flex: 1,
+                child: IconButton(
+                  icon: Icon(Icons.delete),
+                  onPressed: () {
+                    storePage.removeStore(store);
+                  }),
+              )
             ],
           ),
         ),

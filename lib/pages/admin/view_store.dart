@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:zerosix/arguments/product_args.dart';
+import 'package:zerosix/arguments/store_args.dart';
 import 'package:zerosix/models/product.dart';
 import 'package:zerosix/models/store.dart';
 import 'package:zerosix/pages/admin/add_product.dart';
@@ -61,7 +63,7 @@ class ViewStorePage extends StatelessWidget {
           ),
           Padding(
             padding: EdgeInsets.fromLTRB(16.0, 0, 16.0, 0),
-            child: Text('Operating Hours: ${store.operatingHours}'),
+            child: Text('Operating Hours: ${store.opensAt} - ${store.closesAt}'),
           ),
           SizedBox(
               height: 16.0
@@ -79,7 +81,12 @@ class ViewStorePage extends StatelessWidget {
               padding: EdgeInsets.fromLTRB(0.0, 16.0, 0.0, 0.0),
               child: ListView.builder(
                 itemBuilder: (context, position) {
-                  return ProductLayout(product: store.products.elementAt(position));
+                  return ProductLayout(
+                    productArgs: ProductArgs(
+                        store: store,
+                        selectedProduct: store.products.elementAt(position)
+                    ),
+                  );
                 },
                 itemCount: store.products.length >= 3? 3: store.products.length,
               ),
@@ -96,7 +103,12 @@ class ViewStorePage extends StatelessWidget {
                 child: Text('Manage Products${store.products.length >= 3 ? '(${store.products.length})' : ''}',
                     style: TextStyle(fontSize: 16)
                 ),
-                onPressed: () => Navigator.pushNamed(context, ViewProductsPage.routeName, arguments: store.products)),
+                onPressed: () => Navigator.pushNamed(context, ViewProductsPage.routeName, arguments:
+                  StoreArgs(
+                    store: store,
+                    products: store.products)
+                )
+            ),
           )
         ],
       ),

@@ -1,4 +1,5 @@
 import 'package:zerosix/models/product.dart';
+import 'package:zerosix/models/store.dart';
 import 'package:zerosix/utils/factory.dart';
 import 'package:zerosix/utils/global.dart';
 
@@ -38,6 +39,7 @@ class ProductController {
     }
   }
 
+  // TODO: When customer buys a product, stock of it should have subtract the qty.
   void manageStock() {
     for (Product product in Factory.getAllProducts()) {
       for (Product selectedProduct in getProducts()) {
@@ -53,10 +55,20 @@ class ProductController {
   }
 
   void addProduct(Product product) {
-    getProducts().add(product);
+    for (Store store in Global.stores) {
+      if (product.storeKey == store.key) {
+        store.products.add(product);
+      }
+    }
   }
 
   void updProduct(Product product) {
-
+    for (Store store in Global.stores) {
+      if (product.storeKey == store.key)
+        for (Product savedProduct in store.products) {
+          if (savedProduct.key == product.key)
+            savedProduct = product;
+        }
+    }
   }
 }

@@ -5,8 +5,9 @@ class Store {
   String name;
   String description;
   String photo;
-  String operatingHours;
+  String opensAt;
+  String closesAt;
   List<Product> products;
 
-  Store({this.key, this.name, this.description, this.photo, this.operatingHours, this.products});
+  Store({this.key, this.name, this.description, this.photo, this.opensAt, this.closesAt, this.products});
 }

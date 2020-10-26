@@ -9,7 +9,14 @@ class StoreController {
     getStores().add(store);
   }
 
-  void updateStore(Store store) {
+  void updStore(Store store) {
+    for (Store savedStore in getStores()) {
+      if (savedStore.key == store.key)
+        savedStore = store;
+    }
+  }
 
+  void removeStore(Store store) {
+    getStores().remove(store);
   }
 }

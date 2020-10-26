@@ -64,12 +64,6 @@ class _LoginPageState extends State<LoginPage> {
     }
   }
 
-
-  @override
-  void initState() {
-    Global.stores = Factory.getStores();
-  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -91,7 +85,7 @@ class _LoginPageState extends State<LoginPage> {
               ),
               child: Image(
                 image: AssetImage(
-                    'assets/img_logo.png'
+                    'assets/img_logo_w_bg.png'
                 ),
               ),
             ),
@@ -102,23 +96,50 @@ class _LoginPageState extends State<LoginPage> {
               TextField(
                 controller: _fldUsername,
                 decoration: InputDecoration(
-                    hintText: 'Username'
+                    hintText: 'Username',
+                    filled: true,
+                    fillColor: Colors.grey[200],
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.all(Radius.circular(10.0)),
+                      borderSide: BorderSide(color: Colors.grey[200]),
+                    ),
+                    enabledBorder: OutlineInputBorder(
+                      borderSide: BorderSide(color: Colors.grey[200], width: 0.0),
+                    ),
+                    focusedBorder: OutlineInputBorder(
+                      borderRadius: BorderRadius.all(Radius.circular(10.0)),
+                      borderSide: BorderSide(color: Colors.red[300]),
+                    ),
                 ),
+
               ),
             ),
             Padding(
-              padding: EdgeInsets.fromLTRB(30.0, 0, 30.0, 0),
+              padding: EdgeInsets.fromLTRB(30.0, 16.0, 30.0, 0),
               child:
               TextField(
                 controller: _fldPassword,
                 obscureText: isPassHidden,
                 decoration: InputDecoration(
-                    hintText: 'Password'
+                    hintText: 'Password',
+                    filled: true,
+                    fillColor: Colors.grey[200],
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.all(Radius.circular(10.0)),
+                      borderSide: BorderSide(color: Colors.grey),
+                    ),
+                    enabledBorder: OutlineInputBorder(
+                      borderSide: BorderSide(color: Colors.grey[200], width: 0.0),
+                    ),
+                    focusedBorder: OutlineInputBorder(
+                      borderRadius: BorderRadius.all(Radius.circular(10.0)),
+                      borderSide: BorderSide(color: Colors.red[300]),
+                  ),
                 ),
               ),
             ),
             Padding(
-              padding: EdgeInsets.fromLTRB(30.0, 30.0, 30.0, 0),
+              padding: EdgeInsets.fromLTRB(30.0, 16.0, 30.0, 0),
               child:
               RaisedButton(onPressed: () => _loginClicked(context),
                 color: Colors.red[800],
