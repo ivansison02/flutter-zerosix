@@ -22,11 +22,11 @@ Shopping app like Lazada, Shopee and etc made on Flutter.
 # user credentials
 1. Admin\
 username: admin\
-password: 123456\
+password: 123456
 
 2. User/Customer\
 username: user_customer\
-password: 123456\
+password: 123456
 
 UI: https://www.figma.com/file/IGoRnWslZ7rPNElz3s4SHA/ZeroSix?node-id=0%3A1
 >>>>>>> 9311d825136e5472138936471b1c4fdd4f82b5c1
