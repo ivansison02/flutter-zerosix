@@ -19,11 +19,11 @@ samples, guidance on mobile development, and a full API reference.
 # flutter-zerosix
 Shopping app like Lazada, Shopee and etc made on Flutter.
 
-# user
+# user credentials
 1. Admin\
 username: admin\
 password: 123456\
-\
+
 2. User/Customer\
 username: user_customer\
 password: 123456\
